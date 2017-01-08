@@ -1,0 +1,19 @@
+<h1>
+  {{title}}
+</h1>
+<form #userForm="ngForm" (ngSubmit)="actionOnSubmit()">
+  <div class="form-group">
+    <label>First name:</label>
+    <input class="form-control" type="text" name="firstName" required maxlength="20" ngModel>
+
+    <label>Last name:</label>
+    <input class="form-control" type="text" name="lastName" required maxlength="20" ngModel>
+
+    <label>User id:</label>
+    <input class="form-control" id="email" type="text" name="email" pattern="[0-9]{4}" #email="ngModel" ngModel>
+    <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+      User id have to contain 4 digits.
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>
